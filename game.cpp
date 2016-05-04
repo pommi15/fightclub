@@ -278,7 +278,7 @@ void Game::fight_round(std::string attacker, std::string defender) {
 void Game::last_man() {
   auto attacker = this->fighters.begin();
   auto defender = this->fighters.begin();
-  if (this->fighters.size() < 2) {
+  if (this->fighters.size() > 1) {
     while (this->fighters.size() > 1) {
       do {
         attacker = this->fighters.begin();
