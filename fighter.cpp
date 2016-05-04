@@ -1,5 +1,4 @@
 #include <cstdlib>
-#include <ctime>
 
 #include <iostream>
 #include "fighter.h"
@@ -9,22 +8,21 @@
 
 Fighter::Fighter(const std::string name)
     : name(name), type("base"), life_points(100) {
-  std::srand(std::time(nullptr));
   this->offense_points =
       MIN_POINTS + (std::rand() % (MAX_POINTS - MIN_POINTS + 1));
   this->defense_points =
       MIN_POINTS + (std::rand() % (MAX_POINTS - MIN_POINTS + 1));
 }
 
-int Fighter::attack() const{
+int Fighter::attack() const {
   return std::rand() % this->offense_points;
 }
 
-int Fighter::defense(int hitpoints){
+int Fighter::defense(int hitpoints) {
   /** reduce lifepoints by hitpoints */
   this->life_points -= hitpoints;
   /** check if alife */
-  if (this->life_points <= 0){
+  if (this->life_points <= 0) {
     /** death occoured */
     return -1;
   } else {
@@ -33,10 +31,20 @@ int Fighter::defense(int hitpoints){
   }
 }
 
-std::string Fighter::get_type() const{
+std::string Fighter::get_type() const {
   return this->type;
 }
 
-std::string Fighter::get_name() const{
+std::string Fighter::get_name() const {
   return this->name;
+}
+
+int Fighter::get_life() const {
+  return this->life_points;
+}
+int Fighter::get_offense() const {
+  return this->offense_points;
+}
+int Fighter::get_defense() const {
+  return this->defense_points;
 }

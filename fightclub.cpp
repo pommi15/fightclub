@@ -1,5 +1,5 @@
 /*************************
- *         0000          *
+ *         xoxo          *
  *      fightclub        *
  *         Game          *
  *          by           *
@@ -10,15 +10,10 @@
  *        if15b038       *
  *************************/
 
-#include <string>
-#include <iostream>
-#include <map>
-#include <memory>
-
-#include "fighter.h"
+#include "game.h"
 
 int main() {
-  auto my_fighter = std::make_shared<Fighter>("test");
-
+  auto game = std::make_shared<Game>();
+  game->start();
   return 0;
 }

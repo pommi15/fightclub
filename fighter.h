@@ -23,6 +23,21 @@ public:
    */
   std::string get_type() const;
   /**
+   * life getter
+   * @return life points
+   */
+  int get_life() const;
+  /**
+   * offense getter
+   * @return offense points
+   */
+  int get_offense() const;
+  /**
+   * defense getter
+   * @return defense points
+   */
+  int get_defense() const;
+  /**
    * name getter
    * @return name
    */

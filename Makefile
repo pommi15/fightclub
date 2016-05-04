@@ -7,8 +7,8 @@ CFLAGS=-g -Wall -std=c++11
 
 all: fightclub
 
-fightclub: fightclub.o fighter.o doctor.o warrior.o ninja.o lemming.o
-	${CC} ${CFLAGS} fightclub.o fighter.o  doctor.o warrior.o ninja.o lemming.o -o fightclub
+fightclub: fightclub.o fighter.o doctor.o warrior.o ninja.o lemming.o game.o
+	${CC} ${CFLAGS} fightclub.o fighter.o  doctor.o warrior.o ninja.o lemming.o game.o -o fightclub
 
 fightclub.o: fightclub.cpp
 	${CC} ${CFLAGS} -c fightclub.cpp -o fightclub.o
@@ -22,6 +22,8 @@ warrior.o: warrior.cpp
 	${CC} ${CFLAGS} -c warrior.cpp -o warrior.o
 ninja.o: ninja.cpp
 	${CC} ${CFLAGS} -c ninja.cpp -o ninja.o
+game.o: game.cpp
+	${CC} ${CFLAGS} -c game.cpp -o game.o
 
 .PHONY: clean
 clean:
