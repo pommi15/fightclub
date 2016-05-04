@@ -196,7 +196,7 @@ void Game::create_fighter() {
       return;
   }
   this->fighters[nickname] = new_fighter;
-  std::cout << new_fighter->get_name() << " from the type "
+  std::cout << "---  " << new_fighter->get_name() << " of the type "
             << new_fighter->get_type() << " awaits your orders." << std::endl
             << std::endl;
 }
@@ -208,46 +208,55 @@ void Game::fight_round(std::string attacker, std::string defender) {
   if (defense_points > 0) {
     counter_points = this->fighters[attacker]->defense(defense_points);
   }
-  std::cout << attacker << " attacks " << defender << " with " << offense_points
-            << " hitpoints." << std::endl;
+  std::cout << "---" << std::endl;
+  std::cout << "   " << attacker << " attacks " << defender << " with "
+            << offense_points << " hitpoints." << std::endl;
   if (defense_points == -1) {
-    std::cout << defender << " died from the attack." << std::endl;
+    std::cout << "   " << defender << " died from the attack." << std::endl;
     this->fighters.erase(defender);
   } else {
-    std::cout << defender << " has " << this->fighters[defender]->get_life()
-              << " life left." << std::endl;
+    std::cout << "   " << defender << " has "
+              << this->fighters[defender]->get_life() << " life left."
+              << std::endl;
     if (defense_points == 0) {
-      std::cout << defender << " tried a counterattack but failed."
+      std::cout << "   " << defender << " tried a counterattack but failed."
                 << std::endl;
     } else {
-      std::cout << defender << " counterattacks with " << defense_points
-                << " hitpoints." << std::endl;
+      std::cout << "   " << defender << " counterattacks with "
+                << defense_points << " hitpoints." << std::endl;
       if (counter_points == -1) {
-        std::cout << attacker << " died from the counterattack." << std::endl;
+        std::cout << "   " << attacker << " died from the counterattack."
+                  << std::endl;
         this->fighters.erase(attacker);
       } else {
-        std::cout << attacker << " has " << this->fighters[attacker]->get_life()
-                  << " life left." << std::endl;
+        std::cout << "   " << attacker << " has "
+                  << this->fighters[attacker]->get_life() << " life left."
+                  << std::endl;
       }
     }
   }
+  std::cout << "---" << std::endl;
 }
 
 void Game::last_man() {
   auto attacker = this->fighters.begin();
   auto defender = this->fighters.begin();
-
-  while (this->fighters.size() > 1) {
-    do {
-      attacker = this->fighters.begin();
-      defender = this->fighters.begin();
-      std::advance(attacker, std::rand() % this->fighters.size());
-      std::advance(defender, std::rand() % this->fighters.size());
-    } while (attacker == defender);
-    this->fight_round(attacker->first, defender->first);
-    std::cout << std::endl;
+  if (!this->fighters.empty()) {
+    while (this->fighters.size() > 1) {
+      do {
+        attacker = this->fighters.begin();
+        defender = this->fighters.begin();
+        std::advance(attacker, std::rand() % this->fighters.size());
+        std::advance(defender, std::rand() % this->fighters.size());
+      } while (attacker == defender);
+      this->fight_round(attacker->first, defender->first);
+      std::cout << std::endl;
+    }
+    std::cout << this->fighters.begin()->first << " of the type "
+              << this->fighters.begin()->second->get_type()
+              << " is still standing." << std::endl;
+  } else {
+    std::cout << "!--  Please add at least 2 fighters." << std::endl
+              << std::endl;
   }
-  std::cout << this->fighters.begin()->first << " of the type "
-            << this->fighters.begin()->second->get_type()
-            << " is still standing." << std::endl;
 }

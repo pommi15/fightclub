@@ -5,13 +5,12 @@
 #include <memory>
 #include "fighter.h"
 
-class Game
-{
-public:
+class Game {
+ public:
   Game();
   void start();
 
-private:
+ private:
   std::map<std::string, std::shared_ptr<Fighter>> fighters;
   bool main_menu();
   int get_input() const;
