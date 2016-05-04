@@ -18,6 +18,9 @@ class Game {
   void print_fighters() const;
   void fight_round(std::string attacker, std::string defender);
   void create_fighter();
+  void delete_fighter();
   void single_fight();
   void last_man();
+  void generate_fighters();
+  std::string unique_rand_name() const;
 };
