@@ -1,3 +1,14 @@
+/*************************
+ *         xoxo          *
+ *      fightclub        *
+ *         Game          *
+ *          by           *
+ *    Thomas RAUHOFER    *
+ *        if15b029       *
+ *          and          *
+ *     Tobias WATZEK     *
+ *        if15b038       *
+ *************************/
 #include <cstdlib>
 
 #include <iostream>
