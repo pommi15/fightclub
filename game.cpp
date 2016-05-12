@@ -126,7 +126,7 @@ void Game::print_fighters() const {
     std::cout << "    [defense: " << fighter.second->get_defense() << "]"
               << std::endl;
   }
-  std::cout << "---" << std::endl;
+  std::cout << "---" << this->fighters.size() << " Fighters" << std::endl;
 }
 
 void Game::single_fight() {
